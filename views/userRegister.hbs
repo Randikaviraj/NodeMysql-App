@@ -127,5 +127,14 @@
             </div>
         </form>
     </div>
+    <script type="text/javascript">
+        async function errormsg(status) {
+            if(status){
+            alert( "Sign up failed already have a account.." );
+            document.userReg.firstname.focus() ;
+            }
+        }
+        errormsg({{data}});
+    </script>
 </body>
 </html>

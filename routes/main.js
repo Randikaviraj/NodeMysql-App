@@ -4,15 +4,18 @@ var path = require("path");
 const router=express.Router();
 
 router.get('/firstpage',(req,res)=>{
-    res.render("index",{layout: false})
+    res.render("firstpage",{layout: false})
 })
 
-router.get('/loginpsge.html',(req,res)=>{
-    res.sendFile(path.resolve('./html/loginpsge.html'))
+router.get('/loginpage.html',(req,res)=>{
+    res.render("loginpage",{layout: false,data:false})
 })
 
 router.get('/userRegister.html',(req,res)=>{
-    res.sendFile(path.resolve('./html/userRegister.html'))
+    res.render("userRegister",{layout: false,data:false})
 })
 
+router.get('/passwordrecovery.html',(req,res)=>{
+    res.render("passwordrecovery",{layout: false,data:false})
+})
 module.exports=router;
