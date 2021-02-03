@@ -16,18 +16,19 @@ router.post("/login", (req, res) => {
         timeout: 40000,
       },
       function (error, results, fields) {
-        if (!error) {
+        if (!error && results.length!=0) {
           var json = JSON.parse(JSON.stringify(results));
-          var data = json[0];
+          console.log(json)
+          // var data = json[0];
           var token = jwt.sign({ data: req.body.loginname }, "secreat key");
           let options = {
-            path: "/",
+            path: "/profile",
             sameSite: true,
             maxAge: 1000 * 60 * 60 * 24,
             httpOnly: true,
           };
           res.cookie("x-access-token", token, options);
-          res.redirect('/');
+          res.redirect('/profile/home');
         } else {
           console.log(error);
           res.render("loginpage", { layout: false, data: true });
